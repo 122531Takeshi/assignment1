@@ -1,0 +1,54 @@
+{% extends 'root.html' %}
+{% block head %}
+
+{% endblock %}
+
+{% block body%}
+<div class="container" name="contact_page">
+    
+    
+    <p>Please input your details below: </p>
+   
+    <form  method="POST">
+    <label for="f_name">First name:</label>
+    <input type="text" id="f_name" name="f_name">
+    <label for="l_name">Last name:</label>
+    <input type="text" id="l_name" name="l_name"><br>
+    <label for="email">Email:</label><br>
+    <input type="email" id="email" name="email"><br>
+    <label for="message">Message:</label><br>
+    <input type="text" id="message" name="message"><br><br>
+    <input type="submit" value="Submit" id="btn1">
+
+
+
+
+    </form>
+    <h2>{%block title %}User contacts{% endblock %}</h2>
+    <table>
+        <tr>
+            <th>First Name</th>
+            <th>Last Name</th>
+            <th>Email</th>
+            <th>Message</th>
+            <th>Action</th>
+        </tr>
+        {% for i in entries %}
+        <tr>
+            <td>{{i.f_name}}</td>
+            <td>{{i.l_name}}</td>
+            <td>{{i.email}}</td>
+            <td>{{i.message}}</td>
+            <td>
+                <a href="/update/{{ i.id }}">Modify</a>
+                <a href="/delete/{{ i.id }}">Delete</a>
+            </td>
+        </tr>
+        {% endfor %}
+    </table>
+</div>
+{% endblock %}
+{%block footer%}
+{%endblock%}
+
+
